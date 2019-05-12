@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Creates a New Movie</title>
+    </h:head>
+    <h:body>
+        <h1>Create a New Movie</h1>
+        <hr/>
+        <h:form>
+            <!-- Form to get details about new movie -->
+            <h:panelGrid columns="2" >
+                <h:outputLabel value="Title : "/>
+                <h:inputText value="#{productController.movie.title}" required="true" requiredMessage="Title is mandatory Field"/>
+
+                <h:outputLabel value="Description :"/>
+                <h:inputTextarea value="#{productController.movie.description}" cols="25" rows="5"/>
+
+                <h:outputLabel value="Company : "/>
+                <h:inputText value="#{productController.movie.company}" required="true" requiredMessage="Company is mandatory Field"/>
+
+                <h:outputLabel value="Platform  : "/>
+                <h:inputText value="#{productController.movie.platform}"/>
+
+                <h:outputLabel value="Classification  : "/>
+                <h:inputText value="#{productController.movie.classification}"/>
+
+                <h:outputLabel value="Price  : "/>
+                <h:inputText label = "Price" value="#{productController.movie.price}" required="true">
+                    <f:validateLongRange minimum="1"/>
+                </h:inputText>
+                <h:outputLabel value="Stock Number  : "/>
+                <h:inputText label = "Stock Number"  value="#{productController.movie.stockNumber}" required="true">
+                    <f:validateLongRange minimum = "1" />
+                </h:inputText>
+
+                <h:outputLabel value="Duration(Minutes) "/>
+                <h:inputText value="#{productController.movie.duration}" label = "Duration" >
+                    <f:validateLongRange minimum = "1" />
+                </h:inputText>
+
+                <h:outputLabel value="Special Features : "/>
+                <h:inputTextarea value="#{productController.movie.specialFeatures}"  cols="25" rows="5"/>
+
+            </h:panelGrid>
+            <br></br>
+            <!-- Button to create a Movie -->
+            <h:commandButton value="Create a movie" action="#{productController.doCreateMovie}"/>
+            <br></br>
+            <br></br>
+            <hr/>
+            <!-- Button for navigation -->
+            <h:link outcome="listMovies.xhtml" value="The Stock of Movies"/> | <h:link outcome="index.xhtml" value="Main Page"/>
+        </h:form>
+
+    </h:body>
+</html>

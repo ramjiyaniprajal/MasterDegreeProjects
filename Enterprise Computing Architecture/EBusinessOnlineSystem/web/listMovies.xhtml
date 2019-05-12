@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <f:metadata>
+        <!-- load all movies -->
+        <f:viewAction action="#{productController.onLoadMovies}" />
+    </f:metadata>
+    <h:head>
+        <title>The Stock of Movies</title>
+    </h:head>
+    <h:body>
+        <h1>The Stock of Movies</h1>
+        <hr/>
+        <!--  Display successfully message when movie recently created-->
+        <c:if test="#{productController.movie.title != null}">
+            <b>Successfully created the movie : <h:outputText value="#{productController.movie.title}"/></b>
+        </c:if>
+        <!--   show movie list in data table-->
+        <h:dataTable value="#{productController.movieList}" var="pr" border="1">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Title"/>
+                </f:facet>
+                <!-- Drill down option to view movie details -->
+                <h:link value="#{pr.title}"  outcome="#{productController.productDetailsPage(pr.id,'movie')}" />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Platform"/>
+                </f:facet>
+                <h:outputText value="#{pr.platform}"/>
+            </h:column>
+        </h:dataTable>
+        <!--  Shows the total number of movies-->
+        Total Movies: <h:outputText value="#{productController.totalProducts}"/>
+        <hr/>
+        <h:form>
+            <!-- Links to navigate -->
+            <h:link outcome="newMovie.xhtml" value="Create a New Movie"/> | <h:link outcome="index.xhtml" value="Main Page"/>
+        </h:form>
+
+    </h:body>
+</html>
+
+

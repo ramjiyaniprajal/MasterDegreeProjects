@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Search for a Order</title>
+        <script type="text/javascript">
+            //Hide search box and show search result
+            function show(id) {
+                document.getElementById("searchArea").style.display = 'none';
+                var element = document.getElementById(id);
+                element.style.display = 'block';
+
+            }
+        </script>
+
+    </h:head>
+    <h:body>
+        <span id="searchArea">
+            <h1>Search for an Order</h1>
+            <hr/>
+            <!-- Form to get order id -->
+            <h:form id="form" prependId="false">
+                <h:panelGrid columns="2" >
+                    <h:outputLabel value="Order #: "/>
+                    <h:inputText value="#{orderController.order.id}" />
+                </h:panelGrid>
+                <br></br>
+                <!-- Button to search order by given order id -->
+                <h:commandButton value="Search for a Order" action="#{orderController.doSearchOrder}" onclick="show('output');">
+                    <f:ajax execute="@form" render="orders totalOrderCount" />
+                </h:commandButton>
+                <!-- Navigation links -->
+                <br> </br>
+                <h:link outcome="listOrders.xhtml" value="The List Orders"/> | <h:link outcome="index.xhtml" value="Main Page"/>
+
+            </h:form>
+        </span>
+        <span id="output" style="display: none;">
+            <h1>The found Order</h1>
+            <hr/>
+            <!-- Display result order details -->
+            <h:dataTable id="orders" value="#{orderController.orderList}" var="odr" border="1">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Order"/>
+                    </f:facet>
+                    <h:outputText value="#{odr.id}" converter="omnifaces.SelectItemsConverter"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Customer"/>
+                    </f:facet>
+                    <h:link value="#{odr.customer.name}"  outcome="#{customerController.showCustomerDetailsPage(odr.customer.id)}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Item"/>
+                    </f:facet>
+                    <h:link value="#{odr.product.title}" outcome="#{productController.productDetailsPage(odr.product.id,'unknown')}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Created At"/>
+                    </f:facet>
+                    <h:outputText value="#{odr.orderDate}" converter="omnifaces.SelectItemsConverter"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Unit Price"/>
+                    </f:facet>
+                    <h:outputText value="$#{odr.product.price}" converter="omnifaces.SelectItemsConverter"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Qty"/>
+                    </f:facet>
+                    <h:outputText value="#{odr.quantity}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Total Price"/>
+                    </f:facet>
+                    <h:outputText value="$#{odr.quantity * odr.product.price}"/>
+                </h:column>
+            </h:dataTable>
+            <br></br>
+            <!-- Show total number of orders -->
+            Total orders: <h:outputText id="totalOrderCount" value="#{orderController.totalOrders}"/>
+            <br></br>
+            <hr/>
+            <!-- Links to navigate -->
+            <h:form>
+                <h:link outcome="newOrder.xhtml" value="Create a New Order"/> | <h:link outcome="index.xhtml" value="Main Page"/>
+            </h:form>
+        </span>
+    </h:body>
+</html>

@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html>
+	<!-- Declaring the conent type and adding meta data viewport for responsiveness-->
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../style/style.css" />
+		<title>Eastern</title>
+
+		<script type="text/javascript">
+			var pageName='Eastern';
+			// Load artefacts and crafts from eastern.
+			function load() {
+			// JSON to manage data.
+				var json = {
+					"data":[
+						{
+						"category":"Eastern",
+						"fields":[
+						{"Id":"E1","Name":"Puzzle","Desc": "The only downside to finding a really good book to read is that it will be over before you want it to be. But that won't be the case with puzzle designer Brady Whitney's Codex Silenda. Even though the wooden book only has five pages, you'll need to solve a complex mechanical puzzle on each one before you can turn to the next."},
+						{"Id":"E2","Name":"Frog Knocker","Desc": "Made entirely of laser-cut wood, the Codex Silenda is half book and half mind-boggling challenge. Within its pages is a short story about an apprentice in Leonardo Da Vinci's workshop who stumbles across a similar tome, except the version they find is actually a trap created by the artist that you'll need to help them solve in order to escape. But don't worry, the only thing truly at risk is your own sanity as you work through the Codex's five unique puzzles."},
+						{"Id":"E3","Name":"Clay Vase","Desc": "The anatomical snuffbox (also known as the radial fossa), is a triangular depression found on the lateral aspect of the dorsum of the hand. It is located at the level of the carpal bones, and best seen when the thumb is abducted. In the past, this depression was used to hold snuff (ground tobacco) before inhaling via the nose – hence it was given the name ‘snuffbox’.In this article, we shall look at the anatomy of the anatomical snuffbox – its borders, contents, and any clinical correlations."},
+						{"Id":"E4","Name":"Coloured Oil Lamps","Desc": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."},
+						{"Id":"E5","Name":"Jewel Puzzle Box","Desc": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32."},
+						{"Id":"E6","Name":"Chess Set","Desc": "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"},
+						{"Id":"E7","Name":"Beaded Decorative Box","Desc": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."}
+						]}
+						]
+					};
+					var mydiv = document.getElementById("itemDiv");
+					// logic to read data from json and create layout on screen
+					for(var i=0; i <json.data.length; i++){
+						var fields = json.data[i].fields;
+						if(json.data[i].category == pageName){
+							for(var j=0;j<fields.length;j++){
+								var aTag = document.createElement('a');
+								aTag.setAttribute('class','item effect');
+								aTag.setAttribute('href',"eastern_detail.html?Id="+fields[j].Id);
+								var src ="../images/Eastern/"+fields[j].Id+".jpg";
+								var alt = fields[j].Name;
+							aTag.innerHTML = "<h2 class='zero'>"+alt+"</h2> <img class='artefacts-images top' src='"+src+"' alt='"+alt+"' title='"+alt+"'/>";
+							mydiv.appendChild(aTag);
+							}
+						}
+					}
+			}
+		</script>
+		
+	</head>
+
+
+	<body onload="load();">
+		 <!--Header information-->
+		<header>
+			<img src="../images/Logo.png" alt="Museum Logo" class="logo"/>
+		</header>
+
+	   <!--Navigation button for small screen device-->
+		<label for="show-menu" class="show-menu">Menu</label>
+		<input type="checkbox" id="show-menu" role="button">
+		<!--Navigation list bar-->
+		  <ul id="topnav">
+			<li><a href="../index.html">Home</a></li>
+			<li><a href="../pages/chinese.html">Chinese</a></li>
+			<li><a class="active" href="../pages/eastern.html"><Strong>Eastern</Strong></a></li>
+			<li><a href="../pages/european.html">European</a></li>
+			<li><a href="../pages/timefees.html">Timetable &#38; Fees</a></li>
+			<li><a href="../pages/contactus.html">Contact Us</a></li>
+			<li><a href="../pages/feedback.html">Feedback</a></li>
+		</ul>
+
+		<!--Main article-->
+		<article>
+		<!-- indicating the current page-->
+		<div class="smallscreen">
+			<Strong>Eastern</Strong>
+		</div>
+			<section>
+				<!--Image container to display list of items -->
+				<div class="image-container" >
+					<div class="content" id="itemDiv">
+					</div>            
+				</div>
+			</section>
+		</article>
+
+	  <!--Footer: Copyright information-->
+		<footer>
+			<p>&#169; All images contained therein in the folders marked Chinese, Eastern and European were created and belongs to Andrew Chiou. The rights and owndership has been asserted on this day 4 Aug 2012. The copyright owner gives permission for the images to be used as part of the elements for assessment material for courses offered by Central Queensland University.</p>
+		</footer>
+	</body>
+
+</html>

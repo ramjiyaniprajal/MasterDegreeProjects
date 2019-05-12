@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
+    <f:metadata>
+        <f:viewAction action="#{customerController.onLoad()}" />
+    </f:metadata>
+    <h:head>
+        <title>List of the Customers</title>
+    </h:head>
+    <h:body>
+        <h:form id="form" prependId="false">
+            <h1>List of the Customers</h1>
+            <hr/>
+            <!-- Display successful message only when customer is created recently -->
+            <c:if test="#{customerController.customer.name != null}">
+                <b>Successfully created customer : <h:outputText value="#{customerController.customer.name}"/></b>
+            </c:if>
+            <!--  Data table to show all customer details-->
+            <h:dataTable value="#{customerController.customerList}" var="cu" border="1">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Name"/>
+                    </f:facet>
+                    <h:outputText value="#{cu.name}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Address"/>
+                    </f:facet>
+                    <h:outputText value="#{cu.address}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Orders"/>
+                    </f:facet>
+                    <!-- used function to display property count -->
+                    <h:outputText value="#{fn:length(cu.orders)}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Action" />
+                    </f:facet>
+                    <!-- link to drill down to the customer details -->
+                    <h:link value="View Details"  outcome="#{customerController.showCustomerDetailsPage(cu.id)}"/>
+                </h:column>
+
+            </h:dataTable>
+            <br></br>
+            <!-- Displaying total number of customers  -->
+            Total Customers: <h:outputText value="#{customerController.totalCustomers}" converter="omnifaces.SelectItemsConverter"/>
+            <br></br>
+            <hr/>
+        </h:form>
+        <h:form>
+            <!-- Links to navigate -->
+            <h:link outcome="newCustomer.xhtml" value="Create a New Customer"/> | <h:link outcome="index.xhtml" value="Main Page"/>
+        </h:form>
+    </h:body>
+</html>
+
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <h:head>
+        <title>Creates a new Order</title>
+    </h:head>
+    <h:body>
+        <h1>Create a new Order</h1>
+        <hr/>
+        <h:form>
+            <!--  Form to get order details [there is problem in layout if I write comment in panel]-->
+            <!-- Combobox to show all customers -->
+            <!-- Combobox to show all items -->
+            <!--  product Quantity-->
+
+            <h:panelGrid columns="2" >
+                <h:outputLabel value="Customer : "/>
+                <h:selectOneMenu value="#{orderController.order.customer}" converter="omnifaces.SelectItemsConverter">
+                    <f:selectItems value="#{customerController.allCustomers}" var="c"
+                                   itemLabel="#{c.name}" itemValue="#{c}" />
+                </h:selectOneMenu>
+
+                <h:outputLabel value="Item :"/>
+                <h:selectOneMenu value="#{orderController.order.product}" converter="omnifaces.SelectItemsConverter">
+                    <f:selectItems value="#{productController.allProducts}" var="p"
+                                   itemLabel="#{p.title} - #{p.price}" itemValue="#{p}" />
+                </h:selectOneMenu>
+
+                <h:outputLabel value="Quantity : "/>
+                <h:inputText value="#{orderController.order.quantity}" required="true" label = "Quantity" >
+                    <f:validateLongRange minimum = "1" maximum = "1000" />
+                </h:inputText>
+
+            </h:panelGrid>
+            <br></br>
+            <!-- Button to create an order -->
+            <h:commandButton value="Create a order" action="#{orderController.doCreateOrder}"/>
+            <br></br>
+            <hr/>
+
+            <!-- Links for navigation -->
+            <h:link outcome="listOrders.xhtml" value="Order List"/> | <h:link outcome="index.xhtml" value="Main Page"/>
+        </h:form>
+
+    </h:body>
+</html>

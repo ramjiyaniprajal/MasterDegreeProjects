@@ -1,0 +1,159 @@
+/*
+File Name: style.css
+Author: Prajalkumar Ramjiyani
+Created Time:14-08-2017
+Last Modified Time: 26-08-2017
+Purpose: Study
+*/
+
+/*Body*/
+body {
+  font-family: sans-serif;
+   }
+ 
+/* Header */
+header{
+	border-width: 1 px;
+	border-style: solid;
+	border-color: #099;
+	border-radius: 25px;
+	width:100%;
+}
+
+/*Navigation menu*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #099;
+}
+
+li {
+    float: left;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  border-color: #099;
+  border-radius: 25px;
+  border-width: 1 px;
+}
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Main Article */
+article{
+	border-width: 1 px;
+	border-style: solid;
+	border-color: #099;
+    text-align: center;	
+	border-radius: 25px;
+}
+
+/* Footer */
+footer{
+    padding: 20px;
+	color: lightgray;
+    font-size: .8em;
+    background: #099;
+	 border-radius: 25px;
+  border-width: 1 px;
+}
+
+table{
+	text-align:left;
+
+}
+td {
+	vertical-align:top;
+}
+/*Artefacts images*/
+.artefacts-images{  
+    width: 350px;
+    height: 250px;
+    margin: 10px;
+}
+
+.item {
+    position:relative;
+     width: 350px;
+    height: 238px;
+    overflow:hidden;
+    float:left;
+    margin-right:20px;
+	margin-bottom: 20px;
+    background-color:#4CAF50
+}
+.item h2 {
+    color:#fff;
+    padding:10px;
+    left:-20px;
+    top:20px;
+    position:relative;
+	font-size:20px;
+    line-height:24px;
+    margin:0;
+    font-family:'Lato'
+}
+
+.effect img {
+    position:absolute;
+    left:0;
+    bottom:0;
+    cursor:pointer;
+    margin:-12px 0;
+    -webkit-transition:bottom .3s ease-in-out;
+    -moz-transition:bottom .3s ease-in-out;
+    -o-transition:bottom .3s ease-in-out;
+    transition:bottom .3s ease-in-out
+}
+
+.effect img.top:hover {
+    bottom:-60px;
+    padding-top:100px
+}
+h2.zero {
+    margin:0;
+    padding:0
+}
+
+/*artefacts description*/
+.artefacts-images-desc{  
+    width: 500px;
+    height: 375px;
+    margin: 10px;
+	margin-right: 50px;
+}
+
+.content {
+    padding: 20px;
+    margin: 20px;
+    overflow: hidden;
+}
+
+.content img {
+    float: left;
+}
+
+.logo{
+	width: 700px;
+}

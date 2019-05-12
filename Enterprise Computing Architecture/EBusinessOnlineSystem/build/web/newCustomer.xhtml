@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Creates a new Customer</title>
+    </h:head>
+    <h:body>
+        <h1>Create a new Customer</h1>
+        <hr/>
+        <h:form>
+            <!-- Getting user input to create a customer -->
+            <h:panelGrid columns="2" >
+                <h:outputLabel value="Name : " />
+                <h:inputText value="#{customerController.customer.name}" required="true" requiredMessage="Name is required!">
+                </h:inputText>
+                <h:outputLabel value="Address :"/>
+                <h:inputText value="#{customerController.customer.address}" required="true" requiredMessage="Address is required"/>
+
+                <h:outputLabel value="Phone Number : "/>
+                <h:inputText  value="#{customerController.customer.phone}" required="true" requiredMessage="Phone is required">
+                </h:inputText>
+
+                <h:outputLabel value="Email Address  : "/>
+                <h:inputText value="#{customerController.customer.email}" >
+                    <f:validator validatorId="com.ebusiness.validator.EmailValidator" />
+                </h:inputText>
+
+            </h:panelGrid>
+            <br></br>
+            <!--  Button to create a customer-->
+            <h:commandButton value="Create a customer" action="#{customerController.doCreateCustomer}"/>
+            <br></br>
+            <br></br>
+            <hr/>
+            <!-- Links for navigation -->
+            <h:link outcome="listCustomers.xhtml" value="Customer List"/> | <h:link outcome="index.xhtml" value="Main Page"/>
+        </h:form>
+
+    </h:body>
+</html>

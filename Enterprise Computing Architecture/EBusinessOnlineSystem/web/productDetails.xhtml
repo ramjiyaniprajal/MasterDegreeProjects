@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title >The Found #{param['productType']}</title>
+
+        <f:metadata>
+            <!--  On page load search for given product-->
+            <f:viewAction action="#{productController.productById(param['productId'],param['productType'])}" />
+        </f:metadata>
+    </h:head>
+
+    <h:body>
+        <!-- show found movie details -->
+        <c:if test="#{param['productType'] == 'movie'}">
+            <h1>Movie : #{productController.movie.title}</h1>
+            <h:dataTable id="movie" value="#{productController.movie}" var="mv" border="1">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Title"/>
+                    </f:facet>
+                    <h:outputText value="#{mv.title}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Company"/>
+                    </f:facet>
+                    <h:outputText value="#{mv.company}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Platform"/>
+                    </f:facet>
+                    <h:outputText value="#{mv.platform}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Classification"/>
+                    </f:facet>
+                    <h:outputText value="#{mv.classification}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Duration"/>
+                    </f:facet>
+                    <h:outputText value="#{mv.duration}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Description"/>
+                    </f:facet>
+                    <h:outputText value="#{mv.description}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Special Features"/>
+                    </f:facet>
+                    <h:outputText value="#{mv.specialFeatures}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Price"/>
+                    </f:facet>
+                    <h:outputText value="$#{mv.price}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Stock Number"/>
+                    </f:facet>
+                    <h:outputText value="#{mv.stockNumber}"/>
+                </h:column>
+            </h:dataTable>
+            <h:form>
+                <h:link outcome="newMovie.xhtml" value="Create a New Movie"/> | <h:link outcome="index.xhtml" value="Main Page"/>
+            </h:form>
+            <hr/>
+        </c:if>
+        <!-- show found game details  -->
+        <c:if test="#{param['productType'] == 'game'}">
+            <h1>Movie : #{productController.game.title}</h1>
+            <h:dataTable id="game" value="#{productController.game}" var="gm" border="1">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Title"/>
+                    </f:facet>
+                    <h:outputText value="#{gm.title}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Company"/>
+                    </f:facet>
+                    <h:outputText value="#{gm.company}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Platform"/>
+                    </f:facet>
+                    <h:outputText value="#{gm.platform}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Classification"/>
+                    </f:facet>
+                    <h:outputText value="#{gm.classification}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Description"/>
+                    </f:facet>
+                    <h:outputText value="#{gm.description}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Price"/>
+                    </f:facet>
+                    <h:outputText value="#{gm.price}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Number"/>
+                    </f:facet>
+                    <h:outputText value="#{gm.stockNumber}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="HD Video Output"/>
+                    </f:facet>
+                    <h:outputText value="#{gm.hdVideoOutput}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Hard Drive space"/>
+                    </f:facet>
+                    <h:outputText value="#{gm.hardDriveSpace}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Number of Players"/>
+                    </f:facet>
+                    <h:outputText value="#{gm.noOfCoPlayers}"/>
+                </h:column>
+
+            </h:dataTable>
+            <!--  navigation links-->
+            <h:form>
+                <h:link outcome="newGame.xhtml" value="Create a New Game"/> | <h:link outcome="index.xhtml" value="Main Page"/>
+            </h:form>
+            <hr/>
+        </c:if>
+    </h:body>
+</html>
+

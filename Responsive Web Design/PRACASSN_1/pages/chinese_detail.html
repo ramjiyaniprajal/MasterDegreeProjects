@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="../style/style.css" />
+    <title>Chinese</title>
+
+	<script type="text/javascript">
+		var pageName='Chinese';
+		// function to get url parameters
+		function getURLParameter(sParam)
+		{
+			var sPageURL = window.location.search.substring(1);
+			var sURLVariables = sPageURL.split('&');
+			for (var i = 0; i < sURLVariables.length; i++) 
+			{
+				var sParameterName = sURLVariables[i].split('=');
+				if (sParameterName[0] == sParam) 
+				{
+					return sParameterName[1];
+				}
+			}
+		}
+		// on load function to load content of the page.
+		function load() {
+		//Json to manage data.
+			var json = {
+				"data":[
+					{
+					"category":"Chinese",
+					"fields":[
+					{"Id":"C1","Name":"Chopstick Stand","Desc": "We carry a wide variety of colorful, fun, stately and whimsical chopstick rests and holders. Have you ever had a chopstick roll off a plate or tried to pick them up off a flat table? Let us introduce you to chopstick rests. A rest will help keep your chopstick clean and readily available. With such a variety to choose from we are sure you will find something that will coordinate with your set of chopsticks."},
+					{"Id":"C2","Name":"Exercise Balls","Desc": "'One of the hot topics in the fashion and entertainment world these days is how sitting is basically the equivalent of killing yourself,' said Hitha Prabhakar, the founder of AitchPe Retail Advisory, a firm that specializes in retail analysis and fashion commentary. 'And you definitely hear people talking about the latest chair or ball they’re buying to help.' Mr. Holland, a brand ambassador for Technogym, uses its Wellness Ball ($225), which has a weighted bottom to prevent rolling, a black washable mesh cover and a QR code that allows users to access exercise tutorials on their phone and tablets.</br> He teaches exercisers how to work with the ball at their desks to move while they sit. He and a handful of his trainers lead four sitting classes a week at the Core Club and at Technogym’s SoHo showroom."},
+					{"Id":"C3","Name":"Bullock Cart","Desc": "A bullock cart or ox cart is a two-wheeled or four-wheeled vehicle pulled by oxen (draught cattle). It is a means of transportation used since ancient times in many parts of the world. They are still used today where modern vehicles are too expensive or the infrastructure does not favor them. Used especially for carrying goods, the bullock cart is pulled by one or several oxen (bullocks). The cart (also known as a jinker) is attached to a bullock team by a special chain attached to yokes, but a rope may also be used for one or two animals. The driver and any other passengers sit on the front of the cart, while load is placed in the back. Traditionally the cargo was usually agrarian goods and lumber."},
+					{"Id":"C4","Name":"Abacus","Desc": "The abacus (plural abaci or abacuses), also called a counting frame, is a calculating tool that was in use in Europe, China and Russia, centuries before the adoption of the written Hindu–Arabic numeral system. The exact origin of the abacus is still unknown. Today, abaci are often constructed as a bamboo frame with beads sliding on wires, but originally they were beans or stones moved in grooves in sand or on tablets of wood, stone, or metal."},
+					{"Id":"C5","Name":"Painted Shell","Desc": "I squirted some liquid watercolors in a paint tray, grabbed some brushes, and put out some seashells.  As usual, the kiddos came over to investigate before I was done setting up.  🙂  Within a few minutes, the table was filled with happily painting children . . . and one happily painting teacher! Some of the shells were matte to begin with, while others were shiny.  Some had ridges, while others were very smooth.  There were store-bought shells mixed in with hand-found shells. The kids and I had fun seeing how the watercolors acted on the different surfaces."},
+					{"Id":"C6","Name":"Jewellery Case","Desc": "'Beautiful' is so vague and obvious that our usual format for these articles breaks down – it’s hard to analyze intent because there are simply too many ways to use it. Besides, we all think our jewelry is beautiful!"},
+					{"Id":"C7","Name":"Snuff Box","Desc": "The radius and scaphoid articulate deep to the snuffbox to form the basis of the wrist joint. In the event of a fall onto an outstretched hand (FOOSH), this is the area through which the brunt of the force will focus. This results in these two bones being the most often fractured of the wrist. In a case where there is localized tenderness within the snuffbox, knowledge of wrist anatomy leads to the speedy conclusion that the fracture is likely to be of the scaphoid. This is understandable as the scaphoid is a small, oddly shaped bone whose purpose is to facilitate mobility rather than confer stability to the wrist joint[citation needed]. In the event of inordinate application of force over the wrist, this small scaphoid is likely to be the weak link[citation needed]. Scaphoid fracture is one of the most frequent causes of medico-legal issues.</br>An anatomical anomaly in the vascular supply to the scaphoid is the area to which the blood supply is first delivered. Blood enters the scaphoid distally. Consequently, in the event of a fracture the proximal segment of the scaphoid will be devoid of a vascular supply, and will—if action is not taken—avascularly necrose within a sufferer's snuffbox. Due to the small size of the scaphoid and its shape, it is difficult to determine, early on, whether or not the scaphoid is indeed fractured with an x-ray. Further complications include; carpal instability (ligament disruption) and fracture-dislocations."}
+					]
+					}
+					]
+				};
+				
+				var mydiv = document.getElementById("itemDiv");
+				var item = getURLParameter('Id');
+			// logic to read json and form layout.		
+			for(var i=0; i <json.data.length; i++){
+					var fields = json.data[i].fields;
+					if(json.data[i].category == pageName){
+						for(var j=0;j<fields.length;j++){
+							if(fields[j].Id == item){
+								var imgTag = document.createElement('img');
+								imgTag.setAttribute('class',"artefacts-images-desc");
+								imgTag.setAttribute('src',"../images/Chinese/"+fields[j].Id+".jpg");
+								imgTag.setAttribute('alt',fields[j].Name);
+								document.getElementById('itemName').innerHTML=fields[j].Name;
+								mydiv.appendChild(imgTag);
+								var pTag = document.createElement('p');
+								pTag.innerHTML = fields[j].Desc;
+								mydiv.appendChild(pTag);
+							}
+						}	
+					}
+					
+				}
+		}
+	</script>
+	
+</head>
+
+<body onload="load();">
+    <!--Header-->
+    <header>
+        <img src="../images/Logo.png" alt="Museum Logo" class="logo"/>
+    </header>
+
+    <!--Navigation-->
+	<ul class="topnav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a class="active" href="../pages/chinese.html"><Strong>Chinese</Strong></a></li>
+        <li><a href="../pages/eastern.html">Eastern</a></li>
+        <li><a href="../pages/european.html">European</a></li>
+        <li><a href="../pages/timefees.html">Timetable &#38; Fees</a></li>
+		<li><a href="../pages/feedback.html">Feedback</a></li>
+    </ul>
+
+    <!--Main article-->
+    <article>
+		<strong id="itemName" style="color:forestgreen;"></strong>
+        <section>
+			<div class="content" id="itemDiv">
+			</div>            
+        </section>
+    </article>
+
+    <!--Footer-->
+    <footer>
+        <p>&#169; All images contained therein in the folders marked Chinese, Eastern and European were created and belongs to Andrew Chiou. The rights and owndership has been asserted on this day 4 Aug 2012. The copyright owner gives permission for the images to be used as part of the elements for assessment material for courses offered by Central Queensland University.</p>
+    </footer>
+
+	</body>
+
+</html>
